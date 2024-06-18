@@ -18,12 +18,14 @@ const login = async (req, res = response) => {
                 msg: 'Usuario/ Password no son correctos - correo'
             })
         }
+        
         //Verificar usuario activo
         if (!usuario.estado) {
             return res.status(400).json({
                 msg: 'Usuario/ Password no son correctos - estado:false'
             })
         }
+
         // Verificar la contraseña
         const validaPassword = bcryptjs.compareSync(password, usuario.password);
         if (!validaPassword) {
